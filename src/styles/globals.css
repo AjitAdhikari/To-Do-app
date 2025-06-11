@@ -202,3 +202,17 @@ body {
 .tasklist-taskItem h3 {
   margin: 0 0 10px;
 }
+
+.tasklist-logoutBtn {
+    background: #e74c3c;
+    color: #fff;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.2s;
+}
+.tasklist-logoutBtn:hover {
+    background: #c0392b;
+}

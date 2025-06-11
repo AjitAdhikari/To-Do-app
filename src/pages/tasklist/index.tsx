@@ -25,7 +25,7 @@ export default function TaskListPage() {
     const fetchTasks = async () => {
         try {
             let userDetails = localStorage.getItem('user');
-            let userID = JSON.parse(userDetails || '{}').id; // Default to user_id 1 if not found
+            let userID = JSON.parse(userDetails || '{}').id;
             const res = await axios.get('/api/tasks', { params: { user_id: userID } });
             setTasks(res.data.tasks || res.data);
         } catch (error: any) {
@@ -109,6 +109,18 @@ export default function TaskListPage() {
 
     return (
         <div className="tasklist-container">
+            {/* LOGOUT BUTTON */}
+            <div style={{ position: 'absolute', top: 20, right: 30 }}>
+                <button
+                    className="tasklist-logoutBtn"
+                    onClick={() => {
+                        localStorage.removeItem('user');
+                        window.location.href = '/';
+                    }}
+                >
+                    Logout
+                </button>
+            </div>
             <h1 className="tasklist-heading">Task List</h1>
 
             {/* TAB BUTTONS */}
