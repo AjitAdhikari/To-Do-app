@@ -1,6 +1,6 @@
 import { connectToDatabase } from '@/lib/db';
-import { NextApiRequest, NextApiResponse } from 'next';
 import bcrypt from 'bcryptjs';
+import { NextApiRequest, NextApiResponse } from 'next';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'POST') return res.status(405).end();
@@ -31,7 +31,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
 
     await db.end();
-    res.status(200).json({ user: { id: user.sn, username: user.username } });
+    res.status(200).json({ user: { id: user.id, username: user.username } });
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: 'Something went wrong' });

@@ -5,6 +5,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   if (req.method !== 'GET') return res.status(405).end();
 
   const user_id = req.query.user_id as string;
+  console.log('Fetching tasks for user:', user_id);
 
   if (!user_id) return res.status(400).json({ message: 'User ID required' });
 

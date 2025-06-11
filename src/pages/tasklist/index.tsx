@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 
 interface Task {
     task_id?: number;
@@ -24,7 +24,9 @@ export default function TaskListPage() {
 
     const fetchTasks = async () => {
         try {
-            const res = await axios.get('/api/tasks', { params: { user_id: 1 } });
+            let userDetails = localStorage.getItem('user');
+            let userID = JSON.parse(userDetails || '{}').id; // Default to user_id 1 if not found
+            const res = await axios.get('/api/tasks', { params: { user_id: userID } });
             setTasks(res.data.tasks || res.data);
         } catch (error: any) {
             alert(error.response?.data?.message || 'Failed to fetch tasks');
@@ -46,7 +48,7 @@ export default function TaskListPage() {
         }
 
         const payload = {
-            user_id: 1,
+            user_id: JSON.parse(localStorage.getItem('user') || '{}').id, 
             title: formData.title,
             description: formData.description,
             finished_date: finishedDateObj.toISOString(),
