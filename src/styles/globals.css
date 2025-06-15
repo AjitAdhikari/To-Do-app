@@ -216,3 +216,12 @@ body {
 .tasklist-logoutBtn:hover {
     background: #c0392b;
 }
+
+.secondaryBtn{
+  background-color: #d51528;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
